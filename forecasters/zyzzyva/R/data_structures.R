@@ -36,43 +36,36 @@ LAG_SUFFIX <- "lag"
 VALID_MODELING_OPTIONS <- c(
   "add_interactions",
   "ahead",
-  "backfill_buffer",
   "cluster_covariates",
   "cdc_probs",
-  "debug_folder",
-  "debug_clusters_folder",
+  "debug_folder", # constant
+  "debug_clusters_folder", # constant
   "earliest_data_date",
-  "estimate_tail_sd",
   "fitting_tau",
   "forecast_date",
   "geo_type",
   "impute_last_3_response_covariate",
   "incidence_period",
-  "learner",
-  "location_covariates",
+  "learner", # constant
+  "location_covariates", # only in base_covariates
   "location_pcs",
   "log_response",
-  "model_covariates",
-  "n_clusters",
-  "n_tau_left",
-  "n_tau_right",
+  "model_covariates", # only in base_covariates
+  "n_clusters", # set to 1
   "response",
   "roll_lags",
-  "seed",
+  "seed", # where is randomness
   "use_median_point",
   "use_cv_lasso",
-  "lp_solver",
-  "weeks_back",
-  c()
+  "lp_solver", # where is randomness
+  "weeks_back"
 )
 
 MUTUAL_DEFAULTS <- list(
   ahead = 1,
-  backfill_buffer = 5,
   cdc_probs = c(0.01, 0.025, seq(0.05, 0.95, by = 0.05), 0.975, 0.99),
   debug_folder = NULL,
   debug_clusters_folder = NULL,
-  debug_cluster_coefs = NULL,
   incidence_period = "epiweek",
   location_covariates = list(
     ds.covariate("population", tr = tr.log_pad)
@@ -108,12 +101,9 @@ COUNTY_DEFAULTS <- list(
 
 STRATIFIED_LINEAR_DEFAULTS <- list(
   add_interactions = TRUE,
-  estimate_tail_sd = FALSE,
   learner = "stratified_linear",
   fitting_tau = c(0.025, 0.100, 0.250, 0.500, 0.750, 0.900, 0.975),
   n_clusters = 1,
-  n_tau_left = 1,
-  n_tau_right = 1,
   use_cv_lasso = TRUE,
   lp_solver = "glpk"
 )
