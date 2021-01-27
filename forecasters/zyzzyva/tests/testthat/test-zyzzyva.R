@@ -13,7 +13,7 @@ signals <- tibble(
 new_results <- evalcast::get_predictions(forecaster=zz,
                                          name_of_forecaster="zyzzyva",
                                          signals=signals,
-                                         forecast_dates=as.Date("2021-01-22"),
+                                         forecast_dates=as.Date("2020-12-05"),
                                          incidence_period="epiweek",
                                          ahead=1,
                                          geo_type="county",
