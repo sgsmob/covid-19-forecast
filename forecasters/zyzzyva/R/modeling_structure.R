@@ -46,6 +46,7 @@ VALID_MODELING_OPTIONS <- c(
   "log_response",
   "n_locations",
   "quantiles",
+  "recalibrate",
   "response",
   "roll_lags",
   "seed",
