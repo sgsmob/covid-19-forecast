@@ -26,7 +26,8 @@ ml.extract_slope_and_lag_columns_fn <- function(base_covariates, location_covari
       var_cols <- which(startsWith(colnames(X), slope_base_vars[i]))
       n_var_cols <- length(var_cols)
       if (n_var_cols <= 1) {
-        stop("Could not create slope vars in training X, not enough columns for ", var)
+        stop("Could not create slope vars in training X, not enough columns for ",
+             slope_base_vars[i])
       }
       new_X[,i] <- stats::lsfit(-(1:n_var_cols), t(X[, var_cols]))$coef[2,]
     }
