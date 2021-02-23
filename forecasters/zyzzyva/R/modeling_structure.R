@@ -36,6 +36,7 @@ LAG_SUFFIX <- "lag"
 VALID_MODELING_OPTIONS <- c(
   "ahead",
   "base_covariates",
+  "calibrate",
   "debug_folder",
   "forecast_date",
   "geo_type",
@@ -46,7 +47,6 @@ VALID_MODELING_OPTIONS <- c(
   "log_response",
   "n_locations",
   "quantiles",
-  "recalibrate",
   "response",
   "roll_lags",
   "seed",

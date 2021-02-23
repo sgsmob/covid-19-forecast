@@ -82,7 +82,7 @@ ml.linear <- function(train_test,
   # finally, get predictions
   tau <- modeling_options$quantiles
 
-  if (modeling_options$recalibrate) {
+  if (modeling_options$calibrate) {
     # separate out a validation set
     n <- nrow(train_X)
     fit_inds <- sample(1:n, floor(0.75 * n), replace = FALSE)
@@ -105,7 +105,6 @@ ml.linear <- function(train_test,
     tau <- ca.get_empirical_quantiles(tau,
                                       preds,
                                       validate_train_y)
-    print(tau)
   }
 
   out <- matrix(NA, nrow=nrow(new_test_X), ncol=length(tau))

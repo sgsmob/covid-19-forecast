@@ -1,9 +1,9 @@
 devtools::install()
 library(tidyverse)
 
-zz <- zyzzyva::get_forecasters(n_locations = 20,
-                               weeks_back = 4,
-                               recalibrate = TRUE)$zyzzyva_covidcast$forecaster
+zz <- zyzzyva::get_forecasters(calibrate = TRUE,
+                               n_locations = 20,
+                               weeks_back = 4)$zyzzyva_covidcast$forecaster
 signals <- tibble(
     data_source = c("usa-facts",
                     "fb-survey",

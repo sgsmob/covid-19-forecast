@@ -3,6 +3,8 @@ NULL
 
 #' Get an evalcast-compliant zyzzyva forecaster based on the provided arguments.
 #'
+#' @param calibrate whether to calibrate quantiles using a smaller training validation set before
+#'     making predictions.
 #' @param debug_folder file path to which to write debug information.  When NULL, no debug
 #'     information is written.
 #' @param impute_last_3_responses whether to use an ets model to impute the most recent 3 days of
@@ -21,14 +23,14 @@ NULL
 #'     forecaster function and type (one of `c("standalone",
 #'     "ensemble")`).
 #' @export get_forecasters
-get_forecasters  <- function(debug_folder = NULL,
+get_forecasters  <- function(calibrate = FALSE,
+                             debug_folder = NULL,
                              impute_last_3_responses = TRUE,
                              learner = "linear",
                              location_covariates = c("population"),
                              log_response = TRUE,
                              n_locations = NULL,
                              quantiles = c(0.01, 0.025, seq(0.05, 0.95, by = 0.05), 0.975, 0.99),
-                             recalibrate = FALSE,
                              roll_lags = 7,
                              seed = 2020,
                              weeks_back = Inf) {
@@ -63,6 +65,7 @@ get_forecasters  <- function(debug_folder = NULL,
         modeling_options <- list(
             ahead = ahead,
             base_covariates = base_covariates,
+            calibrate = calibrate,
             debug_folder = debug_folder,
             forecast_date = forecast_date,
             geo_type = geo_type,
@@ -73,7 +76,6 @@ get_forecasters  <- function(debug_folder = NULL,
             log_response = log_response,
             n_locations = n_locations,
             quantiles = quantiles,
-            recalibrate = recalibrate,
             response = response,
             roll_lags = roll_lags,
             seed = seed,
