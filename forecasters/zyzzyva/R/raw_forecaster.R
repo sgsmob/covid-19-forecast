@@ -18,5 +18,5 @@ raw_forecaster <- function(base_df,
                                    location_info_df,
                                    modeling_options)
   predicted_quantiles <- ml.fit_model(train_test, modeling_options)
-  return(predicted_quantiles)
+  return(as_tibble(predicted_quantiles))
 }
