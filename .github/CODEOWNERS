@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 # applies for all PRs on develop
+=======
+# Codeowners for all PRs on main/develop
+>>>>>>> 92e7affef824505406a8abede06537975e7d6512
 * @dajmcdon @jsharpna @bnaras
